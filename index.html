@@ -6,7 +6,7 @@
 <script type="text/javascript" src="main.js"></script>
 
 
-<body onLoad='load()'> 
+<body onLoad='startUp();'> 
 <h1> Times you have mooped:
 <span id="Moops">0
 </span> 
@@ -33,7 +33,7 @@ Mooper Cost: <span id="mooperCost" align="left">10</span>
 <button onClick='save()'> Save </button>
 
 
-<button onClick=localStorage.removeItem("save")> Clear Save </button>
+<button onClick=localStorage.removeItem("moopdata")> Clear Save </button>
 
 
 
