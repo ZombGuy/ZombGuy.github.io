@@ -1,4 +1,24 @@
 
+function startUp(){
+	load();
+	setTimeout(function(){
+	save();
+	console.log("function startUp called autoSave")
+	autoSave();
+	}, 1000);
+	
+	if(isNaN(Moops) == false){
+		save();
+	};
+};
+
+function autoSave(){
+	console.log("function autoSave was called succesfully")
+	setInterval(function(){
+	save();
+	
+}, 30000)};
+
  function save(){
 		
 		var session = {
@@ -12,7 +32,11 @@ localStorage.setItem('moopdata',JSON.stringify(session));
 console.log('Saved data values',session.Moops,session.moopers)
  };
 
-function load(){	 
+function load(){
+	if(localStorage.getItem("moopdata") === null){
+	save();
+	};
+	
   var restoredSession =  JSON.parse(localStorage.getItem('moopdata'));
   if(isNaN(restoredSession.Moops) == false){ document.getElementById("Moops").innerHTML = restoredSession.Moops; console.log('Moops restored last save successfully');
   }else{
@@ -26,6 +50,8 @@ function load(){
     
 	 console.log('loading moops and moopers',restoredSession.Moops, restoredSession.moopers);
  };
+
+ 
 var restoredSession = JSON.parse(localStorage.getItem('moopdata')); 	
 var Moops = restoredSession.Moops
 var moopers = restoredSession.moopers
@@ -65,6 +91,7 @@ window.setInterval(function(){
 moopClick(moopers);
 
 }, 1000);
+ 
  
  
 
